@@ -1,0 +1,6 @@
+@(name: String)(repo: org.eclipse.jgit.lib.Repository)
+<ul>
+@*for(commit <- repo.thing) {
+    <li>commit.hash commit.author commit.message commit.time</li>
+}*@
+ </ul>

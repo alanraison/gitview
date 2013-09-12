@@ -1,0 +1,5 @@
+@(name: String)(repo: org.eclipse.jgit.lib.Repository)
+@main(name) {
+<h1>@name</h1>
+@components.branches(repo)
+}

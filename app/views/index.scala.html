@@ -1,7 +1,11 @@
-@(message: String)
+@(repos: Iterable[String])
+@main("Welcome!") {
+<h1>Welcome to GitView!</h1>
+<p>Configure repository locations in gitview.xml</p>
 
-@main("Welcome to Play 2.1") {
-    
-    @play20.welcome(message)
-    
+<ul>
+    @for(r <- repos) {
+    <li><a href="/@r">@r</a></li>
+    }
+</ul>
 }

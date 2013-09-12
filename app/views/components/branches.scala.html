@@ -1,0 +1,6 @@
+@(repo: org.eclipse.jgit.lib.Repository)
+<ul>
+@for(refName <- repo.getAllRefs.keySet) {
+    <li>@refName @if(refName==repo.getFullBranch()) { * }</li>
+}
+</ul>
