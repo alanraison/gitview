@@ -15,11 +15,7 @@ object Application extends Controller {
 
   def summary(repo: String) = Action {
     Ok(views.html.summary(repo)(
-      new FileRepositoryBuilder()
-        .setGitDir(repos.pathFor(repo))
-        .readEnvironment
-        .findGitDir
-        .build
+      FileRepositoryBuilder.create(repos.pathFor(repo))
     ))
   }
 
