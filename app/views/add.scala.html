@@ -1,13 +1,44 @@
 @(updateForm: Form[RepoUpdate])
 @import helper._
 @main("Create ref update notification") {
-    @form(action = routes.Application.refUpdate) {
-        @inputText(updateForm("repoName"))
-        @repeat(updateForm("updates"), min = 1) { refUpdate =>
-            @inputText(refUpdate("branchName"))
-            @inputText(refUpdate("fromRef"))
-            @inputText(refUpdate("toRef"))
-        }
-        <input type="submit" value="Add">
-    }
+<form id="form">
+    <div>
+        <label for="repoId">Repo Name</label>
+        <input id="repoId"/>
+    </div>
+    <div>
+        <label for="branchName">Branch Name</label>
+        <input id="branchName"/>
+    </div>
+    <div>
+        <label for="fromRef">From ref</label>
+        <input id="fromRef"/>
+    </div>
+    <div>
+        <label for="toRef">To ref</label>
+        <input id="toRef"/>
+    </div>
+    <input id="submit" type="button" value="Add">
+</form>
+<script language="JavaScript">
+$(document).ready(
+    $('#submit').click(function() {
+        var repoUpdate = {
+            "repoId": $('#repoId').val(),
+            "refUpdates": [{
+                "branchName": $('#branchName').val(),
+                "fromRef": $('#fromRef').val(),
+                "toRef": $('#toRef').val()
+            }]
+        };
+        $.ajax({
+            url: '/refUpdate',
+            async: false,
+            contentType: "application/json",
+            type: "POST",
+            data: JSON.stringify(repoUpdate)
+        });
+    })
+)
+</script>
 }

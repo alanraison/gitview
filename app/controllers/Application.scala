@@ -1,25 +1,15 @@
 package controllers
 
 import play.api.mvc._
-import org.eclipse.jgit.storage.file.FileRepositoryBuilder
 import play.api.data._
 import play.api.data.Forms._
+import play.api.libs.json._
+import org.eclipse.jgit.storage.file.FileRepositoryBuilder
 import models.{RefUpdate, RepoUpdate}
 
 object Application extends Controller {
 
   val repos = new Repositories
-
-  val updateForm = Form(
-    mapping(
-      "repoName" -> text,
-      "updates" -> seq(mapping(
-        "branch" -> text,
-        "fromRef" -> text,
-        "toRef" -> text
-      )(RefUpdate.apply)(RefUpdate.unapply))
-    )(RepoUpdate.apply)(RepoUpdate.unapply)
-  )
 
   def index = Action {
     Ok(views.html.index(
@@ -33,14 +23,13 @@ object Application extends Controller {
     ))
   }
 
-  def add = Action {
-    Ok(views.html.add(updateForm))
-  }
-
-  def refUpdate = Action { implicit req =>
-    updateForm.bindFromRequest.fold(
-      formWithErrors => BadRequest,
-      value => Ok
+  def update() = Action { req =>
+    req.body.asJson.map { json =>
+      json.validate[RepoUpdate].map { repoUpdate =>
+        Ok(Json.obj("status" -> "ok"))
+      }.recoverTotal(e => BadRequest(JsError.toFlatJson(e)))
+    }.getOrElse(
+      BadRequest(Json.obj("status" -> "Error", "message" -> "Expected Json Data"))
     )
   }
 

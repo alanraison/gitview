@@ -1,5 +1,7 @@
 package models
 
+import play.api.libs.json.Json
+
 /**
  * Created with IntelliJ IDEA.
  * User: alan
@@ -10,3 +12,11 @@ package models
 case class RefUpdate(branchName: String, fromRef: String, toRef: String)
 
 case class RepoUpdate(repoId: String, refUpdates: Seq[RefUpdate])
+
+object RefUpdate {
+  implicit val refUpdateFmt = Json.format[RefUpdate]
+}
+
+object RepoUpdate {
+  implicit val repoUpdateFmt = Json.format[RepoUpdate]
+}
