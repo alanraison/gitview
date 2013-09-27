@@ -1,5 +1,7 @@
 @(name: String)(repo: org.eclipse.jgit.lib.Repository)
 @main(name) {
 <h1>@name</h1>
-@components.branches(repo)
+<div class="summary-branches">@components.branches(repo)</div>
+<div class="summary-log">@components.log(repo)</div>
+
 }

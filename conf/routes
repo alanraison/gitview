@@ -4,9 +4,10 @@
 
 # Home page
 GET     /                           controllers.Application.index
-POST    /refUpdate                  controllers.Application.update
-
 GET     /repo/:repo                 controllers.Application.summary(repo: String)
+
+POST    /refUpdate                  controllers.Publisher.refUpdate
+GET     /events                     controllers.Publisher.events
 
 GET     /test/add                   controllers.Tests.add
 

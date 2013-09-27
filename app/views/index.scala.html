@@ -4,8 +4,9 @@
 <p>Configure repository locations in gitview.xml</p>
 
 <ul>
-    @for(r <- repos) {
-    <li><a href="/@r">@r</a></li>
+    @for(name <- repos) {
+    <li><a href="/repo/@name">@name</a>
+    <span class="repo-description">description</span></li>
     }
 </ul>
 }

@@ -1,6 +1,19 @@
-@(name: String)(repo: org.eclipse.jgit.lib.Repository)
-<ul>
+@(repo: org.eclipse.jgit.lib.Repository)
+<table id="log">
+    <thead>
+        <th>Hash</th>
+        <th>Author</th>
+        <th>Message</th>
+        <th>Date</th>
+    </thead>
+    <tbody>
 @*for(commit <- repo.thing) {
-    <li>commit.hash commit.author commit.message commit.time</li>
+        <tr>
+            <td>commit.hash</td>
+            <td>commit.author</td>
+            <td>commit.message</td>
+            <td>commit.time</td>
+        </tr>
 }*@
- </ul>
+    </tbody>
+ </table>

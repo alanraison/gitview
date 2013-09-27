@@ -32,7 +32,7 @@ $(document).ready(
             }]
         };
         $.ajax({
-            url: '/refUpdate',
+            url: '@routes.Publisher.refUpdate',
             async: false,
             contentType: "application/json",
             type: "POST",
