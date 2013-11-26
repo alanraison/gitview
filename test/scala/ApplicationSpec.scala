@@ -1,5 +1,3 @@
-package test
-
 import org.specs2.mutable._
 
 import play.api.test._
@@ -15,6 +13,7 @@ class ApplicationSpec extends Specification {
   "Application" should {
     
     "Find repository names" in {
+
       // TODO
       true must equalTo(true)
     }

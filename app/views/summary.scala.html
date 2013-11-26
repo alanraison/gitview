@@ -1,5 +1,6 @@
 @(name: String)(repo: org.eclipse.jgit.lib.Repository)
-@main(name) {
+@main(name, Html("<script src='" + routes.Assets.at("javascripts/branches.js") + "'></script>")
+) {
 <h1>@name</h1>
 <div class="summary-branches">@components.branches(repo)</div>
 <div class="summary-log">@components.log(repo)</div>
