@@ -1,8 +1,0 @@
-var gitviewApp;
-
-gitviewApp = angular.module('gitviewApp', []);
-
-gitviewApp.controller('BranchesCtrl', ['$scope', '$http', function($scope, $http) {
-  $scope.branches = ['master', 'dev', 'release'];
-  return $scope.head = 'master';
-}]);
