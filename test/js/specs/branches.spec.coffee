@@ -6,7 +6,7 @@ describe "BranchesCtrl", ->
     module 'gitviewApp'
     inject (_$httpBackend_,$rootScope,$controller) ->
      $httpBackend = _$httpBackend_
-     $httpBackend.expectGET('api/branches.json').
+     $httpBackend.expectGET('branches.json').
          respond { branches: ['master','dev','release'], head: 'master'}
      scope = $rootScope.$new()
   )
@@ -21,7 +21,3 @@ describe "BranchesCtrl", ->
     $httpBackend.flush()
 
     expect(scope.branches).toEqual ['master','dev','release']
-    #expect(scope.branches.length).toBe 3
-    #expect(scope.branches).toContain 'master'
-    #expect(scope.branches).toContain 'dev'
-    #expect(scope.branches).toContain 'release'

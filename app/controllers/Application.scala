@@ -3,6 +3,9 @@ package controllers
 import play.api.mvc._
 import play.api.libs.concurrent.Execution.Implicits.defaultContext
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder
+import models.Branches
+import play.api.libs.json._
+
 
 object Application extends Controller {
 
@@ -22,5 +25,8 @@ object Application extends Controller {
     }
   }
 
-
+  def mockBranches() = Action {
+    val mockResponse = Branches(List("master","dev","release"), "release")
+    Ok(Json.toJson(mockResponse))
+  }
 }

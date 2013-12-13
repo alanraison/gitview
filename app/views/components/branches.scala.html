@@ -1,6 +1,5 @@
-@(repo: org.eclipse.jgit.lib.Repository)
 <div ng-controller="BranchesCtrl">
-    <ul>
-        <li ng-repeat="branch in branches" ng-class="{{head === branch ? 'head' : ''}}">{{branch}}</li>
+    <ul class="branches">
+        <li ng-repeat="branch in branches" ng-class="head === branch ? 'head' : ''">{{branch}}</li>
     </ul>
 </div>
