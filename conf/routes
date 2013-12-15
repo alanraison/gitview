@@ -4,13 +4,13 @@
 
 # Home page
 GET     /                           controllers.Application.index
-GET     /repo/:repo/                controllers.Application.summary(repo: String)
-GET     /repo/:repo/branches.json   controllers.Application.mockBranches
+GET     /:repo/                     controllers.Application.summary(repo: String)
+GET     /:repo/refs                 controllers.Application.branches(repo: String)
 
-POST    /refUpdate                  controllers.Publisher.refUpdate
-GET     /events                     controllers.Publisher.events
+#POST    /refUpdate                  controllers.Publisher.refUpdate
+#GET     /events                     controllers.Publisher.events
 
-GET     /test/add                   controllers.Tests.add
+#GET     /test/add                   controllers.Tests.add
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

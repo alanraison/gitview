@@ -1,1 +1,1 @@
-gitview = {}
+'use strict'

@@ -2,11 +2,10 @@
 @main("Welcome!") {
 <h1>Welcome to GitView!</h1>
 <p>Configure repository locations in gitview.xml</p>
-
+<div ng-controller="RepoCtrl">
 <ul>
-    @for(name <- repos) {
-    <li><a href="/repo/@name">@name</a>
-    <span class="repo-description">description</span></li>
-    }
+    <li ng-repeat="repo in repos"><a href="/{{repo.name}}/">{{repo.name}}</a>
+    <span>{{repo.description}}</span></li>
 </ul>
 }
+</div>
