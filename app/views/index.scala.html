@@ -1,11 +1,13 @@
-@(repos: Iterable[String])
+@(repos: Iterable[RepositorySummary])
 @main("Welcome!") {
+<div class="container">
 <h1>Welcome to GitView!</h1>
 <p>Configure repository locations in gitview.xml</p>
-<div ng-controller="RepoCtrl">
-<ul>
-    <li ng-repeat="repo in repos"><a href="/{{repo.name}}/">{{repo.name}}</a>
-    <span>{{repo.description}}</span></li>
-</ul>
-}
+<div class="row">
+    @for(repo <- repos) {
+    <div class="col-sm-2"><a href="/@repo.name/">@repo.name</a></div>
+    <div class="col-sm-10">@repo.description</div>
+    }
 </div>
+</div>
+}

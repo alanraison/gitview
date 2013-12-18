@@ -1,0 +1,17 @@
+@(title: String, includes: Html = Html.empty)(content: Html)(repos: Iterable[RepositorySummary], current: String)
+@main(title, includes) {
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-2" role="navigation">
+            <div class="list-group">
+                @for(repo <- repos) {
+                <a class='list-group-item @if(repo.name == current) { active }' href="/@repo.name/">@repo.name</a>
+                }
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-10">
+            @content
+        </div>
+    </div>
+</div>
+}

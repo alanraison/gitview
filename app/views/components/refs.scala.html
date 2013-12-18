@@ -1,5 +1,5 @@
 <div ng-controller="RefsCtrl">
-    <ul class="refs">
-        <li ng-repeat="ref in refs">{{ref.name}}</li>
+    <ul id="refs" class="list-unstyled">
+        <li ng-repeat="ref in refs" ng-class="ref.refType">{{ref.name}}</li>
     </ul>
 </div>

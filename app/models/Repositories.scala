@@ -1,12 +1,9 @@
 package models
 
-/**
- * Created with IntelliJ IDEA.
- * User: alan
- * Date: 22/09/13
- * Time: 14:40
- * To change this template use File | Settings | File Templates.
- */
-object Repositories {
+import play.api.libs.json.Json
 
+case class RepositorySummary(name: String, path: String, description: String)
+
+object RepositorySummary {
+  implicit val repositorySummaryFormat = Json.format[RepositorySummary]
 }

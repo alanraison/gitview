@@ -1,8 +1,7 @@
-@(name: String)(repo: org.eclipse.jgit.lib.Repository)
-@main(name, Html("<script src='" + routes.Assets.at("javascripts/refs.js") + "'></script>")
-) {
+@(name: String)(repo: org.eclipse.jgit.lib.Repository)(repoSummary: Iterable[RepositorySummary])
+@withRepoNav(name, Html("<script src='" + routes.Assets.at("javascripts/controllers.min.js") + "'></script>")) {
+<content>
 <h1>@name</h1>
 <div class="summary-branches">@components.refs()</div>
-<div class="summary-log">@components.log(repo)</div>
-
-}
+</content>
+}(repoSummary,name)

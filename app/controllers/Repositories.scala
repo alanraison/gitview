@@ -2,13 +2,16 @@ package controllers
 
 import play.api.Play._
 import java.io.File
+import models.RepositorySummary
 
 /**
  */
 class Repositories {
   val baseConfig = configuration.getConfig("gitview.repos").get
 
-  val names: Iterable[String] = baseConfig.subKeys
+  val summaries: Iterable[RepositorySummary] = baseConfig.subKeys map { name =>
+    RepositorySummary(name, pathFor(name).getAbsolutePath, descriptionFor(name))
+  }
 
   def findGitDir(path: File): File =
     if (path.getName == ".git") {
@@ -16,6 +19,8 @@ class Repositories {
     } else {
       path
     }
+
+  def descriptionFor(repo: String): String = "No Description file"
 
   def pathFor(repo: String): File = {
     baseConfig.getConfig(repo)
